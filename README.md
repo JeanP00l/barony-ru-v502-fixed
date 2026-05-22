@@ -2,7 +2,7 @@
 
 Стабильный русский перевод для **Barony v5.0.2**, упакованный как локальный мод.
 
-Мод подготовлен для установки без замены файлов игры. Он проверялся на Epic Games версии Barony через Heroic Launcher под Linux/Wine, но должен работать и с обычной папкой игры, если версия игры совпадает.
+Мод подготовлен для установки без замены файлов игры. Он проверялся на Epic Games версии Barony через Heroic Launcher под Linux/Wine, но устанавливается как обычный локальный мод Barony. Для Steam и Epic Games отличается в основном только путь к папке игры.
 
 ## Что переведено
 
@@ -19,39 +19,126 @@
 
 В Barony v5.0.2 файл `books/compiled_books.json` читается движком через фиксированный буфер. Русский кэш книг получается слишком большим и может приводить к вылетам. Поэтому этот мод не содержит папку `books/`, не заменяет `compiled_books.json` и не требует `chattr +i`.
 
-## Установка
+## Быстрая установка
 
-1. Скачайте репозиторий через **Code -> Download ZIP**.
+1. Скачайте мод через **Code -> Download ZIP**.
 2. Распакуйте архив.
-3. Поместите папку мода в папку `mods` внутри Barony.
+3. Откройте папку игры Barony.
+4. Создайте папку `mods`, если ее нет.
+5. Поместите распакованную папку мода внутрь `mods`.
 
-Пример для Heroic Launcher на Linux:
+Итоговая структура должна быть такой:
+
+```text
+<Barony>/mods/barony-ru-v502-fixed/data
+<Barony>/mods/barony-ru-v502-fixed/fonts
+<Barony>/mods/barony-ru-v502-fixed/items
+<Barony>/mods/barony-ru-v502-fixed/lang
+<Barony>/mods/barony-ru-v502-fixed/themes
+```
+
+Файл `lang/en.txt` должен лежать здесь:
+
+```text
+<Barony>/mods/barony-ru-v502-fixed/lang/en.txt
+```
+
+Если после распаковки получилась лишняя вложенность вроде:
+
+```text
+barony-ru-v502-fixed/barony-ru-v502-fixed-main/data
+```
+
+перенесите внутреннюю папку так, чтобы `data`, `fonts`, `items`, `lang` и `themes` лежали прямо внутри папки мода.
+
+## Где находится папка Barony
+
+### Windows + Steam
+
+Самый надежный способ:
+
+1. Откройте Steam.
+2. Найдите Barony в библиотеке.
+3. Нажмите правой кнопкой по игре.
+4. Выберите **Manage -> Browse local files**.
+5. Откроется папка Barony. В ней создайте или откройте папку `mods`.
+
+Обычный путь Steam по умолчанию:
+
+```text
+C:\Program Files (x86)\Steam\steamapps\common\Barony
+```
+
+Пример итогового пути:
+
+```text
+C:\Program Files (x86)\Steam\steamapps\common\Barony\mods\barony-ru-v502-fixed
+```
+
+### Windows + Epic Games Store
+
+Самый надежный способ:
+
+1. Откройте Epic Games Launcher.
+2. Найдите Barony в библиотеке.
+3. Откройте меню игры через `...` или **Manage**.
+4. Найдите пункт с папкой установки / install location и откройте папку игры.
+5. В папке Barony создайте или откройте папку `mods`.
+
+Обычный путь Epic Games по умолчанию может быть таким:
+
+```text
+C:\Program Files\Epic Games\Barony
+```
+
+Пример итогового пути:
+
+```text
+C:\Program Files\Epic Games\Barony\mods\barony-ru-v502-fixed
+```
+
+### Linux + Heroic Launcher / Epic Games
+
+В Heroic откройте страницу Barony и используйте пункт открытия папки установки. В моем случае путь выглядел так:
+
+```text
+/home/<user>/Games/Heroic/Barony
+```
+
+Пример итогового пути:
 
 ```text
 /home/<user>/Games/Heroic/Barony/mods/barony-ru-v502-fixed
 ```
 
-Внутри папки мода должны сразу лежать такие папки:
+### Linux + Steam
+
+Откройте Steam, нажмите правой кнопкой по Barony и выберите **Manage -> Browse local files**.
+
+Частый путь Steam на Linux:
 
 ```text
-data
-fonts
-items
-lang
-themes
+~/.steam/steam/steamapps/common/Barony
 ```
 
-Если после распаковки получилась лишняя вложенность вроде `barony-ru-v502-fixed/barony-ru-v502-fixed-main/data`, перенесите внутреннюю папку так, чтобы `data`, `fonts`, `items`, `lang` и `themes` лежали на первом уровне папки мода.
+или:
+
+```text
+~/.local/share/Steam/steamapps/common/Barony
+```
 
 ## Активация в игре
 
 1. Запустите Barony.
-2. Выберите режим **Play Modded Game**.
+2. На стартовом экране выберите **Play Modded Game**.
 3. Откройте список локальных модов.
-4. Включите папку с этим модом.
-5. Запустите игру в modded-режиме.
+4. Найдите папку `barony-ru-v502-fixed` или `barony-ru-v502-fixed-main`.
+5. Включите этот мод.
+6. Запустите игру в modded-режиме.
 
 Если игра попросит перезапуск после включения мода, перезапустите ее и снова выберите **Play Modded Game**.
+
+Для Steam и Epic Games порядок активации одинаковый: игра читает локальные моды из папки `<Barony>/mods/`.
 
 ## Удаление
 
@@ -68,6 +155,8 @@ themes
 - Проверьте, что вы запускаете именно **Play Modded Game**, а не обычный запуск.
 - Проверьте структуру папки: `lang/en.txt` должен находиться прямо внутри папки мода.
 - Проверьте, что папка мода лежит в `<Barony>/mods/`.
+- На Windows проверьте, что архив не распаковался как `barony-ru-v502-fixed-main\barony-ru-v502-fixed-main\lang\en.txt`. Нужен только один уровень папки мода.
+- Если в Steam у вас включен другой русификатор через Workshop, отключите его, чтобы моды не конфликтовали.
 - Если раньше ставился русификатор поверх файлов игры, лучше восстановить чистые файлы Barony через лаунчер и затем поставить этот мод заново.
 - Если игра вылетает, откройте `log.txt` в папке Barony и проверьте сообщения про JSON. В стабильном варианте мода не должно быть ошибок `No 'version' value` и ошибок чтения `compiled_books.json`.
 
