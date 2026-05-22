@@ -1,0 +1,23 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*~
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Game/runtime output if someone tests from this folder by mistake
+log.txt
+logfiles/
+crashlogs/
+savegames/
+scores/
+
+# Local archives
+*.zip
+*.tar
+*.tar.gz
+*.7z
